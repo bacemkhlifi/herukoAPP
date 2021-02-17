@@ -27,7 +27,7 @@ passport.use('local.signup', new localStrategy({
                 return done(err)
             }
             if(user) {
-                return done(null, false, req.flash('error', 'Adresse e-Mail déjà utilisée'))
+                return done(null, false, req.flash('error', 'Nom utlisateur  déjà utilisée'))
             }
 
             if (!user) {
