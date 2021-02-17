@@ -8,6 +8,7 @@ const passport = require('passport')
 const passportSetup = require('./config/passport-setup')
 const router = require('./routes/router');
 const users = require('./routes/user-routes')
+var PORT = process.env.PORT|| 3000
 //bring ejs template
 app.set('view engine','ejs');
 app.use('/static', express.static('public'));
@@ -28,11 +29,17 @@ app.use(flash())
 app.use(passport.initialize())
 app.use(passport.session())
 
-app.use('/router',router);
-app.use('/users',users);
+
 app.get('/',(req,res)=> {
     res.render('user/login',
     {error:""})
 
 })
+app.use('/router',router);
+app.use('/users',users);
 
+//listen to port 3000
+
+app.listen(PORT,()=>{
+    console.log("app is working on port 3000 ...")
+})
