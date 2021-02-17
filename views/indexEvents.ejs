@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<!-- Google Fonts -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+<link rel="stylesheet" href="./../static/custom.css" type="text/css">    
+    <title>home</title>
+    
+</head>
+<body>
+
+    <%- include ('./partials/navbar') -%>
+    <div class="container">
+
+        <%if(message && message!=""){%>
+          <div class="alert alert-success">
+          <%=message%>
+        </div>
+        <%}%>
+          
+      <% chunk.forEach((events)=>{%>
+      <div class="row mt-3">
+        
+        <% events.forEach((event)=>{%>
+          <div class="col-lg-4 col-md-12 mb-4">
+           
+              
+              <!--Card-->
+              <div class="card card-cascade wider mb-4">
+               
+                <!--Card image-->
+                <div class="view view-cascade">
+                  <img src="<%= '/images/'+ event.imageProduct%>" width="300px" height="300px" class="card-img-top">
+                  <a href="#!">
+                    <div class="mask rgba-white-slight"></div>
+                  </a>
+                </div>
+                <!--/Card image-->
+          
+                <!--Card content-->
+                <div class="card-body card-body-cascade text-center">
+                  <!--Title-->
+                  <h4 id="myUL" class="card-title"><strong> <%= event.title%></strong></h4>
+                <!-- <h6 class="text-dark"><%= event.author%></h6> -->
+                <h4 class="text-dark" >Prix : <%= event.prix%> Dt</h4>
+                <h6 class="text-dark">Le lieu :  <%= event.location%></h6>
+                  <h6 class="text-dark"> Publié : <%= event.date.toDateString()%></h6>
+                  
+          
+                  <p class="text-dark"> Description :  <%=(event.description).slice(0,100)%> ...
+                  </p>
+          
+          
+              
+                  <a href="<%='/router/show/'+event._id%>" class="btn btn-unique">Afficher plus de détails</a>
+          
+                </div>
+                <!--/.Card content-->
+               
+              </div>
+              <!--/.Card-->
+              
+            </div>
+           
+      <%})%> 
+      </div>
+      <%})%> 
+      
+      <nav aria-label="...">
+        <ul class="pagination pagination-circle justify-content-center ">
+          <% for (let i=1 ; i <= Math.ceil(total/6); i++) {%>
+        
+            <% if (pageNo == i) {%>
+              <li class="page-item active"><a class="page-link" href="<%= '/router/' + i%>"><%= i%></a></li>
+            <%} else { %>
+            <li class="page-item"><a class="page-link" href="<%= '/router/' + i%>"><%= i%></a></li>
+            <%}%>
+          
+          <%}%>
+        </ul>
+      </nav>
+      </div>       
+            
+  
+    <%- include('./partials/footer')-%>
+
+ 
+    <!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+</body>
+</html>

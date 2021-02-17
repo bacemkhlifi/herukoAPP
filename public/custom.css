@@ -1,0 +1,11 @@
+
+
+/* change navbar color background*/
+.primary-color, ul.stepper li.active a .circle, ul.stepper li.completed a .circle {
+    background-color:#58336d !important;
+}
+
+/* change footer color background*/
+.blue {
+    background-color:#58336d !important;
+}

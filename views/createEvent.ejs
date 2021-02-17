@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<!-- Google Fonts -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+<style>/* change navbar color background*/
+  .primary-color, ul.stepper li.active a .circle, ul.stepper li.completed a .circle {
+      background-color:#58336d !important;
+  }
+  
+  /* change footer color background*/
+  .blue {
+      background-color:#58336d !important;
+  }
+  </style>    
+    <title>add post</title>
+
+</head>
+<body>
+
+    <%- include ('./partials/navbar') -%>
+  <div class="container">
+      <div class="row mt-3">
+          
+   <div class="col  col-md-6 mx-auto">
+       <h2>Ajouter un nouvel article : </h2>
+       <hr>
+       <%errors.forEach((err)=>{%>
+    <div class="alert alert-danger">
+      <%=err.msg%>
+    </div>
+    <%})%>
+    <form  action="/router/show/addpost" method="POST" enctype="multipart/form-data">
+       
+        <!-- title input -->
+        <div class="form-outline mb-4">
+            <label class="form-label" for="title">Titre</label>
+          
+          <input type="text" name="title" id="title" class="form-control" />
+         
+        </div>
+        <!--Add photo -->
+        <!--Card-->
+        <div class="card mdb-color lighten-4 text-center z-depth-2 light-version py-4 px-5">
+
+            
+            <div class="file-field">
+              <p style="color:rgb(235, 70, 70); text-align:left">*Obligatoire</p>
+              <a class="btn-floating peach-gradient mt-0 float-left">
+                <i class="fas fa-paperclip" aria-hidden="true"></i>
+                <input name="avatar" type="file">
+              </a>
+              
+            </div>
+
+</div>
+<!--/.Card-->
+
+<!--/.Card-->
+        <!--End add photo-->
+        <!-- title input -->
+        <div class="form-outline mb-4 mt-3">
+            <label class="form-label" for="prix">Prix</label>
+          <input type="text" name="prix" id="prix" class="form-control" /> 
+          
+        </div>
+        <!-- Description input -->
+        <div class="form-outline mb-4">
+            <label class="form-label" for="description">Description</label>
+            <textarea class="form-control" name="description" id="description" rows="4"></textarea>
+            
+          </div>
+      
+        <!-- location input -->
+        <div class="form-outline mb-4">
+            <label class="form-label" for="location">Le lieu</label>
+          <input type="text" name="location" id="location" class="form-control" />
+         
+        </div>
+      
+      
+      
+        <!-- Number input -->
+        <div class="form-outline mb-4">
+            <label class="form-label" for="phone">Téléphone</label>
+          <input type="number" name="phone" id="phone" class="form-control" />
+          
+        </div>
+      
+        
+      
+        
+      
+        <!-- Submit button -->
+        <button  type="submit" class="btn btn-primary btn-block mb-4">Ajouter</button>
+      </form>
+    </div>
+</div>
+    </div> 
+
+
+
+
+
+    <%- include('./partials/footer')-%>
+    <!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+</body>
+</html>

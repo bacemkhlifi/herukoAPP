@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./../static/custom.css" type="text/css">
+    <title>profile</title>
+</head>
+
+<body>
+
+    <%- include ('./../partials/navbar') -%>
+<div class="container">
+    <div class="row mt-3">
+        <div class="col col-md-6">
+
+
+        <section class="sticky-top" style="top: 80px">
+            <!-- Section: Intro -->
+            <section class="mb-4">
+
+              
+                <div class="card mb-4">
+                    <div class="card-body text-center">
+                        <img src="https://secure.gravatar.com/avatar/e5e742435c354ece5f82d0fbb87ec4c7?s=96&amp;d=mm&amp;r=g"
+                            class="rounded-circle shadow-1-strong mb-3" alt="" style="width: 100px; height: 100px">
+
+                        <h3 class="mb-2"><strong><%=name%></strong></h3>
+
+
+                        <p class="text-muted mb-2">
+                        </p>
+
+                    </div>
+                </div>
+
+                <a href="" type="button" class="btn btn-success btn-block">
+                    Réglages
+                </a>
+          
+        </section>
+    </div>
+    <div class="col col-md-6">
+        <h1>Mes annonces</h1>
+        <% event.forEach((e)=>{%>
+         <!--Card-->
+         <div class="card card-cascade wider mb-4">
+               
+            <!--Card image-->
+            <div class="view view-cascade">
+                <img src="<%= '/images/'+ e.imageProduct%>" width="300px" height="300px" class="card-img-top">
+                <a href="#!">
+                <div class="mask rgba-white-slight"></div>
+              </a>
+            </div>
+            <!--/Card image-->
+      
+            <!--Card content-->
+            <div class="card-body card-body-cascade text-center">
+              <!--Title-->
+              <h4 class="card-title"><strong><%= e.title%></strong></h4>
+              <h4 class="text-dark" >Prix : <%= e.prix%> Dt</h4>
+              <h6 class="text-dark">Lieu : <%= e.location%></h6>
+              <h6 class="text-dark">Publié : <%= e.date.toDateString()%></h6>
+              
+                <hr>
+              <p class="text-dark">Description : <%=e.description%>
+              </p>
+      
+      
+          
+             <button class="btn btn-danger" onclick="deleteEvent()" id="deleteBtn" data-id="<%=e._id%>">Supprimer</button>
+             
+      
+            </div>
+            <!--/.Card content-->
+           
+          </div>
+          <!--/.Card-->
+         <%})%>
+    </div>
+   
+</div>
+</div>
+       
+        
+            <%- include('./../partials/footer')-%>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous"></script>
+            <!--simple function to delete event or article-->
+            <script>function deleteEvent(){
+                let btn =document.getElementById("deleteBtn")
+                let id = btn.getAttribute('data-id')
+                //console.log(id);
+                 
+                axios.delete('/router/profile/delete/'+ id)
+                .then( (res)=> {
+                    console.log(res.data)
+                    alert('Annonce supprimé')
+                    window.location.href = '/router/profile'
+                })
+
+                .catch( (err)=> {
+
+                    console.log(err)
+                })
+            }</script>
+            <!--all copyright reserved by Bacemkhlifi.com-->
+            
+                <!-- JQuery -->
+                <script type="text/javascript"
+                    src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                <!-- Bootstrap tooltips -->
+                <script type="text/javascript"
+                    src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+                <!-- Bootstrap core JavaScript -->
+                <script type="text/javascript"
+                    src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+                <!-- MDB core JavaScript -->
+                <script type="text/javascript"
+                    src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+</body>
+
+</html>
