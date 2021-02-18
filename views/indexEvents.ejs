@@ -40,7 +40,7 @@
                
                 <!--Card image-->
                 <div class="view view-cascade">
-                  <img src="<%= '/images/'+ event.imageProduct%>" width="300px" height="300px" class="card-img-top">
+                  <img src="<%= '/images/'+ event.imageProduct ||'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/480px-No_image_available.svg.png'%>" width="300px" height="300px" class="card-img-top">
                   <a href="#!">
                     <div class="mask rgba-white-slight"></div>
                   </a>
