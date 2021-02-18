@@ -33,8 +33,8 @@ app.use('/users',users);
 
 
 app.get('/',(req,res)=> {
-    res.render('user/login',
-    {error:""})
+    res.redirect('/router',
+    )
 
 })
 

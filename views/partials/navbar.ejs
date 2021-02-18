@@ -1,33 +1,38 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark primary-color">
-        <a class="navbar-brand" href="/router">ｌｅｂｏｎｂｉｔ</a>
-        
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-        
-            <li class="nav-item ">
-              <a class="nav-link" href="/router">Accueil <span class="sr-only"></span></a>
-            </li>   
-          
-            <li class="nav-item" >
-              <a class="nav-link" href="/router/show/addpost">Vendez</a>
-            </li>
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/router/profile">Profil</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link " href="#footer">Aide</a>
-            </li>
-            
-        </ul>
-        </div>
-        <div class="text-right">
-          <a class="btn btn-secondary pull-right btn-sm RbtnMargin " href="/users/logout" >Se déconnecter</a>
-        </div>
-      </nav>
+      <a class="navbar-brand" href="/router">ｌｅｂｏｎｂｉｔ</a>
       
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+      
+          <li class="nav-item ">
+            <a class="nav-link" href="/router">Accueil <span class="sr-only"></span></a>
+          </li>   
+        
+          <li class="nav-item" >
+            <a class="nav-link" href="/router/show/addpost">Vendez</a>
+          </li>
+        
+          <li class="nav-item">
+            <a class="nav-link" href="/router/profile">Profil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="#footer">Aide</a>
+          </li>
+          
+      </ul>
+      </div>
+      <div class="text-right">
+        <%if(a!="object"){%>
+        <a style=<%="display:none"%>;" class="btn btn-secondary pull-right btn-sm RbtnMargin " href="/users/logout" >Se déconnecter</a>
+        <%}else {%>
+          <a  class="btn btn-secondary pull-right btn-sm RbtnMargin " href="/users/logout" >Se déconnecter</a>
+    
+          <%}%>
+      </div>
+    </nav>
+    

@@ -39,10 +39,15 @@ var upload = multer({ storage: storage })
 
 //show add new article
 router.get('/show/addpost',(req,res)=>{
-    
+    var a=typeof(req.user)
+    if(a!=="object"){
+        res.redirect('/users/login')}
+        else {
+    var a=typeof(req.user)
     res.render('createEvent',
-    { errors: req.flash('errors')}
-)})
+    { errors: req.flash('errors'),
+        a:a}
+)}})
 
 //bring post event
 router.post('/show/addpost' ,upload.single('avatar') , [
@@ -56,7 +61,7 @@ router.post('/show/addpost' ,upload.single('avatar') , [
      const errors = validationResult(req)
    if(!errors.isEmpty()){
        req.flash('errors',errors.array())
-       res.redirect('https://lebonbit.herokuapp.com/router/show/addpost')
+       res.redirect('/router/show/addpost')
    }
     else { 
          
@@ -81,7 +86,7 @@ router.post('/show/addpost' ,upload.single('avatar') , [
             if(!err){
                 console.log("added succesfuly to DB")
                 req.flash('info', " L'article a été ajouté avec succès")
-                res.redirect('https://lebonbit.herokuapp.com/router')
+                res.redirect('/router')
             }
             else {
                
@@ -99,8 +104,10 @@ router.get('/show/:id',(req,res)=>{
     Event.find({_id:req.params.id},(err,event)=>{
         if(!err){
             //console.log(event)
+            var a=typeof(req.user)
             res.render('singleEvent',{
-                event:event
+                event:event,
+                a:a
             })
         }
         else {
@@ -113,14 +120,20 @@ router.get('/show/:id',(req,res)=>{
 
 // profile 
 router.get('/profile', (req,res)=> {
-    Event.find({user_id:req.user.id},(err,event)=>{
+    var a=typeof(req.user)
+    if(a!=="object"){
+        res.redirect('/users/login')
+    } else{Event.find({user_id:req.user.id},(err,event)=>{
         if(!err){//console.log(event)
+            var a=typeof(req.user)
          res.render('user/profile',{
-       name: req.user.email,
-    event:event} )}
+        name: req.user.email,
+        event:event,
+        a:a} )}
         else{console.log(err)}
     })
-   
+   }
+    
 
 })
 
@@ -153,12 +166,14 @@ router.get('/:pageNo?',(req,res)=>{ let pageNo = 1
                  for (let i =0 ; i < events.length ; i+=chunkSize) {
                      chunk.push(events.slice( i, chunkSize + i))
                  }
-                    
+                 var a=typeof(req.user)
+                 
                   res.render('indexEvents', {
                       chunk : chunk,
                       message: req.flash('info'),
                       total: parseInt(totalDocs),
                       pageNo: pageNo,
+                      a:a
                       
                   })
              })
