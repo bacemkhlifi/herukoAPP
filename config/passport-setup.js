@@ -33,7 +33,7 @@ passport.use('local.signup', new localStrategy({
             if (!user) {
                 //create user
                 let newUser = new User()
-                newUser.email = req.body.email
+                newUser.email = req.body.email.toLowerCase()
                 newUser.password = newUser.hashPassword(req.body.password),
                 //newUser.avatar = "profile.png"
                 newUser.name=req.body.name,

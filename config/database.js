@@ -8,5 +8,3 @@ mongoose.connect('mongodb+srv://bacem:khlifi21762608@cluster0.jdx32.mongodb.net/
         console.log("Connected succefuly to database ...");
     }
 });
-
-

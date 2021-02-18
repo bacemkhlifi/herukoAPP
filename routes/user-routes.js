@@ -20,15 +20,15 @@ router.get('/login', (req,res)=> {
 // login post request 
 router.post('/login',
   passport.authenticate('local.login', {
-    successRedirect: 'https://lebonbit.herokuapp.com/router',
-      failureRedirect: 'https://lebonbit.herokuapp.com/users/login',
+    successRedirect: '/router',
+      failureRedirect: '/users/login',
       failureFlash: true })
       )
 
 
 // sign up form 
 router.get('/register', (req,res)=> {
-    res.render('https://lebonbit.herokuapp.com/user/register', {
+    res.render('user/register', {
         error: req.flash('error')
     })
 })
@@ -37,8 +37,8 @@ router.get('/register', (req,res)=> {
 
 router.post('/register',
   passport.authenticate('local.signup', {
-    successRedirect: 'https://lebonbit.herokuapp.com/router',
-      failureRedirect: 'https://lebonbit.herokuapp.com/users/register',
+    successRedirect: '/router',
+      failureRedirect: '/users/register',
       failureFlash: true })
       )
 
@@ -55,7 +55,7 @@ res.redirect('/router', {
 
 router.get('/logout', (req,res)=> {
     req.logout();
-    res.redirect('https://lebonbit.herokuapp.com/users/login');
+    res.redirect('/users/login');
 })
 
 module.exports = router
