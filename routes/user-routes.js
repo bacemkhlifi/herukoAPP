@@ -28,7 +28,7 @@ router.post('/login',
 
 // sign up form 
 router.get('/register', (req,res)=> {
-    res.render('user/register', {
+    res.render('https://lebonbit.herokuapp.com/user/register', {
         error: req.flash('error')
     })
 })

@@ -28,6 +28,8 @@ app.use(flash())
 // bring passport 
 app.use(passport.initialize())
 app.use(passport.session())
+app.use('/router',router);
+app.use('/users',users);
 
 
 app.get('/',(req,res)=> {
@@ -35,8 +37,6 @@ app.get('/',(req,res)=> {
     {error:""})
 
 })
-app.use('/router',router);
-app.use('/users',users);
 
 //listen to port 3000
 
