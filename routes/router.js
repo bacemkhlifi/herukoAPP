@@ -56,7 +56,7 @@ router.post('/show/addpost' ,upload.single('avatar') , [
      const errors = validationResult(req)
    if(!errors.isEmpty()){
        req.flash('errors',errors.array())
-       res.redirect('/router/show/addpost')
+       res.redirect('https://lebonbit.herokuapp.com/router/show/addpost')
    }
     else { 
          
@@ -81,7 +81,7 @@ router.post('/show/addpost' ,upload.single('avatar') , [
             if(!err){
                 console.log("added succesfuly to DB")
                 req.flash('info', " L'article a été ajouté avec succès")
-                res.redirect('/router')
+                res.redirect('https://lebonbit.herokuapp.com/router')
             }
             else {
                
